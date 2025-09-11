@@ -10,7 +10,7 @@ async function getData(id) {
     return data.data;
 }
 
-async function graph(id) {
+async function graph(id,graph) {
     let data = await getData(id);
     data = data[0];
     const valores = data.valores;
@@ -22,7 +22,7 @@ async function graph(id) {
     const lscLine = etiquetas.map(() => lsc);
     const licLine = etiquetas.map(() => lic);
 
-    const ctx = document.getElementById('graph_1').getContext('2d');
+    const ctx = document.getElementById(graph).getContext('2d');
     const chart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -94,8 +94,10 @@ async function graph(id) {
 graph(1);
 
 function showGraphs() {
-    for (let i = 1; i < 5; i++) {
-        graph(i)        
-    }
+    graph(1,'graph_1');
+    graph(2,'graph_2');
+    graph(3,'graph_3');
+    graph(4,'graph_4');
+    graph(5,'graph_5');
 
 }
