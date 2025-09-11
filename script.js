@@ -1,5 +1,9 @@
 const API_URL = 'https://apidemo.geoeducacion.com.ar/api/testing/control/';
 
+window.onload =function(){
+showGraphs()
+}
+
 async function getData(id) {
     data = await fetch(API_URL + id);
     data = await data.json();
@@ -88,3 +92,10 @@ async function graph(id) {
 }
 
 graph(1);
+
+function showGraphs() {
+    for (let i = 1; i < 5; i++) {
+        graph(i)        
+    }
+
+}
