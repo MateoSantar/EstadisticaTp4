@@ -29,7 +29,7 @@ async function graph(id,graph) {
             labels: etiquetas,
             datasets: [
                 {
-                    label: 'Valores',
+                    label: 'Valor',
                     data: valores.map(v => v.y),
                     borderColor: 'blue',
                     fill: false,
