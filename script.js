@@ -101,3 +101,26 @@ function showGraphs() {
     graph(5,'graph_5');
 
 }
+
+document.addEventListener("DOMContentLoaded",function(){
+    const select = document.getElementById("select")
+    const garphs = [
+        document.getElementById("graph_1").parentElement,
+        document.getElementById("graph_2").parentElement,
+        document.getElementById("graph_3").parentElement,
+        document.getElementById("graph_4").parentElement,
+        document.getElementById("graph_5").parentElement
+    ]
+
+    garphs.forEach(g => g.style.display = "none")
+
+    select.addEventListener("change",function(){
+        const value = select.value
+
+        garphs.forEach(g => g.style.display = "none")
+
+        if (value >= 1 && value <= 5) {
+            garphs[value-1].style.display = "block"
+        }
+    })
+})
