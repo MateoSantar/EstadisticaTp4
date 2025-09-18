@@ -15,6 +15,7 @@ async function graph(id,graph) {
     data = data[0];
     const valores = data.valores;
     const media = data.media;
+    Analize(valores,media);
     const lsc = data.lsc;
     const lic = data.lic;
     const etiquetas = valores.map(v => v.x);
@@ -91,7 +92,6 @@ async function graph(id,graph) {
     
 }
 
-graph(1);
 
 function showGraphs() {
     graph(1,'graph_1');
@@ -124,3 +124,34 @@ document.addEventListener("DOMContentLoaded",function(){
         }
     })
 })
+
+function Analize(valores,media) {
+    const y = valores.map(v => v.y);
+    const sigma = desvioEstandar(y);
+    const lsc = media + sigma*3;
+    const lic = media - sigma*3;
+    console.log(y);
+    let cont3S = 0;
+    let razones = [];
+    y.forEach(valor => {
+       if (valor > lsc || valor < lic) {
+            cont3S++;
+       } 
+    });
+    if (cont3S != 0) {
+        razones.push(`Hay ${cont3S} punto/s fuera de 3 Sigma`)
+    }
+    if (razones.length != 0) {
+        document.getElementById("paragraph_razones").innerText += razones;
+        document.getElementById("paragraph").style.display = "block";
+        
+    }
+    
+    
+}
+function desvioEstandar(arr) {
+  const n = arr.length;
+  const media = arr.reduce((acc, val) => acc + val, 0) / n;
+  const sumaDiferenciasCuadrado = arr.reduce((acc, val) => acc + Math.pow(val - media, 2), 0);
+  return Math.round(Math.sqrt(sumaDiferenciasCuadrado / n));
+}
