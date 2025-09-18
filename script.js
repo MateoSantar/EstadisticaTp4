@@ -1,7 +1,8 @@
 const API_URL = 'https://apidemo.geoeducacion.com.ar/api/testing/control/';
 
 window.onload = function () {
-    showGraphs()
+    analizeData();
+    showGraphs();
 }
 const dataAnalisis = [];
 let dataId = 1;
@@ -265,4 +266,3 @@ function showGraphs() {
     graph(4, 'graph_4');
     graph(5, 'graph_5');
 }
-analizeData();
