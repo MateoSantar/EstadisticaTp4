@@ -128,6 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
     graphs.forEach(g => g.style.display = "none")
 
     select.addEventListener("change", function () {
+        paragraph_razones.innerHTML = ""
         const value = select.value
 
         graphs.forEach(g => g.style.display = "none")
