@@ -176,6 +176,8 @@ function puntosFueraDe3Sigma(array, lsc, lic, razones) {
 function dosDe3PuntosFueraDe2Sigma(array, sigma, media, razones) {
   const limite2SigmaSuperior = media + 2 * sigma;
   const limite2SigmaInferior = media - 2 * sigma;
+  console.log(sigma);
+  
   const vistos = new Set();
 
   for (let i = 0; i <= array.length - 3; i++) {
@@ -258,7 +260,7 @@ function desvioEstandar(lsc, media, lic) {
     const sigmaSuperior = (lsc - media) / 3;
     const sigmaInferior = (media - lic) / 3;
 
-    return (sigmaSuperior + sigmaInferior) / 2;
+    return sigmaSuperior + sigmaInferior;
 }
 function showGraphs() {
     graph(1, 'graph_1');
